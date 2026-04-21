@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/aish-ctrl/CI-NODE-APP.git'
+                // Explicitly cloning the main branch
+                git branch: 'main', url: 'https://github.com/aish-ctrl/CI-NODE-APP.git'
             }
         }
 
