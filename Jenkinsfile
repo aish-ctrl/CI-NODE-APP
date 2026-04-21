@@ -1,22 +1,19 @@
 pipeline {
     agent any
-    stages {
-        stage('Clone REpository') {
-            steps {
 
-                git  'https://github.com/aish-ctrl/CI-NODE-APP'
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/aish-ctrl/CI-NODE-APP.git'
             }
         }
+
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
             }
         }
-        stage('Run Application') {
-            steps {
-                bat 'node app.js'
-            }
-        }
+
         stage('Run Tests') {
             steps {
                 bat 'node test.js'
@@ -25,11 +22,11 @@ pipeline {
     }
 
     post {
-        sucess {
-             echo 'CI Pipeline sucess'
+        success {
+            echo 'CI Pipeline success'
         }
-        fail {
-             echo 'CI Pipeline failed'
+        failure {
+            echo 'CI Pipeline failed'
         }
     }
 }
